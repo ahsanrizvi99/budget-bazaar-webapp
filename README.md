@@ -5,6 +5,7 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Framework-Django-092E20?logo=django&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Scraping-Selenium_%26_BS4-43B02A?logo=selenium&logoColor=white)
+![Status](https://img.shields.io/badge/Project-Academic-success)
 ![Status](https://img.shields.io/badge/Status-Production_Ready-success)
 
 [![View Project Report](https://img.shields.io/badge/View-Project_Report-blue?logo=adobe-acrobat-reader&logoColor=white)](Project_Report.pdf)
