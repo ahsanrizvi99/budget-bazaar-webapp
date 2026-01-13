@@ -1,0 +1,38 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<body>
+    <div class="welcome-message">
+        <p>Welcome to <span>BUDGET BAZAAR!</span></p>
+        <p>Your Gateway to Great Savings...</p>
+    </div>
+
+    <div class="login-container">
+        <div class="image-container">
+            <img src="{% static 'Chaldal2.jpg' %}" alt="Image 1">
+            <img src="{% static 'apexoffer.png' %}" alt="Image 2">
+        </div>
+
+        <div class="container">
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            
+        </div>
+    </div>
+</body>
+</html>

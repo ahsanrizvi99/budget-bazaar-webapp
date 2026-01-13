@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'product_search_results.css' %}">
+</head>
+<body>
+    <button class="go-back-button" onclick="history.back()">GO BACK</button> 
+
+    <img src="{% static 'digital.jpg' %}" alt="Left Image" class="left-image">
+
+    <div class="content">
+        {% if cheapest_product %}
+        <h1>Cheapest Product</h1>
+        <img src="{% static 'save.png' %}" alt="Save Image" class="save-image">
+        <ul>
+            <li>
+                <p>Name: {{ cheapest_product.name }}</p>
+                <p>Price (TK): {{ cheapest_product.price }}</p>
+                <p>Quantity: {{ cheapest_product.quantity }}</p>
+                <p>Category: {{ cheapest_product.category}}</p>
+                <p>Website: <a href="{{ cheapest_product.website }}">{{ cheapest_product.website }}</a></p>
+            </li>
+        </ul>
+        {% endif %}
+
+        <h2>All Items</h2>
+        <ul>
+            {% if search_results %}
+                {% for product in search_results %}
+                <li>
+                    <p>Name: {{ product.name }}</p>
+                    <p>Price (TK): {{ product.price }}</p>
+                    <p>Quantity: {{ product.quantity }}</p>
+                    <p>Category: {{ product.category}}</p>
+                    <p>Website: <a href="{{ product.website }}">{{ product.website }}</a></p>
+                </li>
+                {% endfor %}
+            {% else %}
+                <p class="no-products-found">No products found.</p>
+            {% endif %}
+        </ul>
+    </div>
+
+    <img src="{% static 'eggy.jpg' %}" alt="Right Image" class="right-image">
+</body>
+</html>

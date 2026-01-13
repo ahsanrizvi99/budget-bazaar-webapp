@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'product_list.css' %}">
+</head>
+<body>
+    <div class="logout-container">
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+
+    <h1>Product List</h1>
+    <form method="get" action="{% url 'product_search' %}">
+        <input type="text" name="name" placeholder="Product Name">
+        <input type="text" name="quantity" placeholder="Quantity">
+        <select name="category">
+            <option value="">All Categories</option>
+            {% for category, category_display in form.fields.category.choices %}
+                <option value="{{ category }}">{{ category_display }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    <img src="{% static 'banner.jpg' %}" alt="Banner Image" class="banner">
+    {% if products %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price (TK)</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.category }}</td>
+                        <td><a href="{{ product.website }}" target="_blank">{{ product.website }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No products found.</p>
+    {% endif %}
+</body>
+</html>
